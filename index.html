@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//RU" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">	
+    
+	<script type="text/javascript" src="/scripts/Jquery/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="/scripts/Jquery/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" src="/scripts/Alex/jquery.alex-placeholder-0.3.6.js"></script>
+	<style>
+		.placeholder
+		{
+			color: gray !important;
+		}
+
+		.placeholder:hover + input, .placeholder:hover + textarea
+		{
+			/*border: 1px solid red !important;*/
+		}
+	
+	</style>
+    <script type="text/javascript">
+		$(window).load(function(){
+			$('.loginInner').placeholder();
+		});
+		/*$(document).ready(function(){
+			$('.loginInner').placeholder();
+		});*/
+	</script>
+</head>
+<body >
+<?php if(isset($_GET['submit'])){ ?>
+	<span>Submited. Will be redirect after </span><span id="sec">0.5</span><span> sec.</span>
+	<script>
+		var timer = 10;
+		$('#sec').text(timer);
+		var interval = setInterval(function(){
+			timer-= 1;
+			$('#sec').text(timer);
+			if(timer <= 0)
+			{
+				clearInterval(interval);
+				Redirect();				
+			}
+		}, 1000);
+		
+		function Redirect(){
+			window.location = "/placeholder.php";
+		}
+	</script>
+	<br />
+	<input type="button" value="Back" onclick="Redirect();" > 
+<?php }else{ ?>
+
+<form id="login" name="login" action="/placeholder.php?submit=true" method="post">
+    <div class="loginWrapper" id="loginPanel">
+        <div id="divMemberLogin">
+            <span id="ctl02_Banner1_ctl00_LoginModule1_MemberLoginLabel">Member Login</span>
+        </div>
+        <div class="loginInner">
+            
+            <input name="Username" id="input-username" type="text" title="Username" class="loginTextBox" placeholder="Username" />
+            <input name="Password" id="input-password" type="password" title="Password" class="passwordTextBox" placeholder="Password" />
+            <span class="left">
+                <input type="submit" name="Login" value="Login" class="loginButton" /> 
+            </span>
+			<p><textarea id="input-text" rows="10" cols="45" name="text" placeholder="Enter a text"></textarea></p>
+        </div>
+		
+		<!--<span style="position: relative;">
+			<div style="left: 0px; top: 0px; position: absolute;  width: 150px; background: white; line-height: 20px">Some text</div>
+			<input style="left: 0px; top: -4px;  position: absolute; width: 150px; background: transparent; border: 1px solid green; line-height: 20px" type="text" class="placeholder2" />
+		</span>!-->
+    </div>
+</form>
+
+<hr/>
+<form method="post" action="/placeholder.php?submit=true" id="Form1">
+    <div class="loginWrapper" id="loginPanel2">
+        <div id="divMemberLogin2">
+            <span id="ctl02_Banner1_ctl00_LoginModule1_MemberLoginLabel2">Member Login</span>
+        </div>
+        <div class="loginInner">
+            
+            <input name="Username" id="input-username2" type="text" title="Username" class="loginTextBox" />
+            <input name="Password" id="input-password2" type="password" title="Password" class="passwordTextBox" />
+            <span class="left">
+                <input type="submit" name="Login" value="Login" class="loginButton" /> 
+            </span>
+			<p><textarea id="input-text" rows="10" cols="45" name="text" ></textarea></p>
+        </div>
+    </div>
+</form>
+
+<!--
+<form method="post" action="/placeholder.php?submit=true" id="Form1">
+    <div class="loginWrapper" id="loginPanel">
+        <div id="divMemberLogin">
+            <span id="ctl02_Banner1_ctl00_LoginModule1_MemberLoginLabel">Member Login</span>
+        </div>
+        <div class="loginInner">
+            
+            <input name="Username" type="text" title="Username" class="loginTextBox"  />            
+            
+            <input name="Password" id="pass1" type="password" title="Password" class="passwordTextBox" />
+            <span class="left">
+                <input type="submit" name="Login" value="Login" class="loginButton" /> 
+            </span>
+        </div>
+    </div>
+</form>!-->
+<?php } ?>
+</body>
+</html>
