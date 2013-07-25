@@ -1,113 +1,114 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//RU" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">	
-    
-	<script type="text/javascript" src="/scripts/Jquery/jquery-1.7.1.js"></script>
-    <script type="text/javascript" src="/scripts/Jquery/jquery-ui-1.8.16.custom.min.js"></script>
-    <script type="text/javascript" src="/scripts/Alex/jquery.alex-placeholder-0.3.6.js"></script>
-	<style>
-		.placeholder
-		{
-			color: gray !important;
-		}
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Jquery.placeholder : jquery.placeholder" />
 
-		.placeholder:hover + input, .placeholder:hover + textarea
-		{
-			/*border: 1px solid red !important;*/
-		}
-	
-	</style>
-    <script type="text/javascript">
-		$(window).load(function(){
-			$('.loginInner').placeholder();
-		});
-		/*$(document).ready(function(){
-			$('.loginInner').placeholder();
-		});*/
-	</script>
-</head>
-<body >
-<?php if(isset($_GET['submit'])){ ?>
-	<span>Submited. Will be redirect after </span><span id="sec">0.5</span><span> sec.</span>
-	<script>
-		var timer = 10;
-		$('#sec').text(timer);
-		var interval = setInterval(function(){
-			timer-= 1;
-			$('#sec').text(timer);
-			if(timer <= 0)
-			{
-				clearInterval(interval);
-				Redirect();				
-			}
-		}, 1000);
-		
-		function Redirect(){
-			window.location = "/placeholder.php";
-		}
-	</script>
-	<br />
-	<input type="button" value="Back" onclick="Redirect();" > 
-<?php }else{ ?>
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+	<script type="text/javascript" src="javascripts/jquery-1.7.1.js"></script>
+    <title>Jquery.placeholder</title>
+  </head>
 
-<form id="login" name="login" action="/placeholder.php?submit=true" method="post">
-    <div class="loginWrapper" id="loginPanel">
-        <div id="divMemberLogin">
-            <span id="ctl02_Banner1_ctl00_LoginModule1_MemberLoginLabel">Member Login</span>
-        </div>
-        <div class="loginInner">
-            
-            <input name="Username" id="input-username" type="text" title="Username" class="loginTextBox" placeholder="Username" />
-            <input name="Password" id="input-password" type="password" title="Password" class="passwordTextBox" placeholder="Password" />
-            <span class="left">
-                <input type="submit" name="Login" value="Login" class="loginButton" /> 
-            </span>
-			<p><textarea id="input-text" rows="10" cols="45" name="text" placeholder="Enter a text"></textarea></p>
-        </div>
-		
-		<!--<span style="position: relative;">
-			<div style="left: 0px; top: 0px; position: absolute;  width: 150px; background: white; line-height: 20px">Some text</div>
-			<input style="left: 0px; top: -4px;  position: absolute; width: 150px; background: transparent; border: 1px solid green; line-height: 20px" type="text" class="placeholder2" />
-		</span>!-->
-    </div>
-</form>
+  <body>
+    <div id="header_wrap" class="outer">
+        <div class="inner">
+          <a id="forkme_banner" href="https://github.com/wizardion/jquery.placeholder">View on GitHub</a>
 
-<hr/>
-<form method="post" action="/placeholder.php?submit=true" id="Form1">
-    <div class="loginWrapper" id="loginPanel2">
-        <div id="divMemberLogin2">
-            <span id="ctl02_Banner1_ctl00_LoginModule1_MemberLoginLabel2">Member Login</span>
-        </div>
-        <div class="loginInner">
-            
-            <input name="Username" id="input-username2" type="text" title="Username" class="loginTextBox" />
-            <input name="Password" id="input-password2" type="password" title="Password" class="passwordTextBox" />
-            <span class="left">
-                <input type="submit" name="Login" value="Login" class="loginButton" /> 
-            </span>
-			<p><textarea id="input-text" rows="10" cols="45" name="text" ></textarea></p>
+          <h1 id="project_title">Jquery.placeholder</h1>
+          <h2 id="project_tagline">jquery.placeholder</h2>
+
+		<section id="downloads">
+			<a class="zip_download_link" href="https://github.com/wizardion/jquery.placeholder/zipball/master">Download this project as a .zip file</a>
+			<a class="tar_download_link" href="https://github.com/wizardion/jquery.placeholder/tarball/master">Download this project as a tar.gz file</a>
+		</section>
         </div>
     </div>
-</form>
 
-<!--
-<form method="post" action="/placeholder.php?submit=true" id="Form1">
-    <div class="loginWrapper" id="loginPanel">
-        <div id="divMemberLogin">
-            <span id="ctl02_Banner1_ctl00_LoginModule1_MemberLoginLabel">Member Login</span>
-        </div>
-        <div class="loginInner">
-            
-            <input name="Username" type="text" title="Username" class="loginTextBox"  />            
-            
-            <input name="Password" id="pass1" type="password" title="Password" class="passwordTextBox" />
-            <span class="left">
-                <input type="submit" name="Login" value="Login" class="loginButton" /> 
-            </span>
-        </div>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+		<div class="inner content">
+			<h2>Hi All!</h2>
+			
+			<div>
+				I hasten to present your new completely painless plugin Placeholder.<br/><br/>
+				This plug-in is quite different from the existing logical approach of other plugins.
+				It was reviewed and was selected in accordance with a popular browsers.<br/><br/>
+				Full support for this plugin has the following browsers:<br/>
+				<ul type="decimal">
+					<li><b style="font-weight: bold;">Internet Explorer:</b> 6, 7, 8, 9.</li>
+					<li><b style="font-weight: bold;">Internet Explorer 10:</b> native.</li>
+					<li><b style="font-weight: bold;">Chrome:</b> native.</li>
+					<li><b style="font-weight: bold;">Firefox:</b> native.</li>
+				</ul>
+				<br/>
+			</div>
+			
+			<h2>It very fast:</h2>
+			
+			<div>
+				Сode is fully optimized for browsers, and works very well.<br/>
+				You will not notice the difference between Chome(where this plugin is disabled and uses the native function of the browser) and IE*
+				<br/>
+				<br/>
+				It operates as follows. The plugin itself determines whether a browser supports attribute "placeholder" and if not, then it include this support. If the browser has support for this attribute, then this plugin is disabled.<br/>
+				So you can don't  worry, about the extra resources, it does not take.<br/><br/>
+			</div>
+			
+			<h2>It very easy:</h2>
+			
+			<div>
+				Just include this plugin on your page and run it when you want.<br/>
+				For example: <br/>
+				
+				
+				<ul type="decimal">
+					<li>
+						<b style="font-weight: bold;">Include: </b><br/>
+						<span class="code"></span><br/>
+						<script>					
+							$(".code").text('<script type="text/javascript" src="/scripts/jquery.alex-placeholder-0.3.6.js" />')
+						</script>
+					</li>
+					<li>
+						<b style="font-weight: bold;">Run: </b><br/>
+						<div class="code">
+							$(window).load(function(){<br/>
+							&emsp;&emsp;$('.loginControl').placeholder();<br/>
+							});<br/>
+						</div>
+					</li>
+				</ul>
+				
+				
+				
+				
+				
+				
+				Good luck with your development!				
+			</div>
+		</div>
     </div>
-</form>!-->
-<?php } ?>
-</body>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <div class="inner footer">
+        <p class="copyright">Jquery.placeholder maintained by <a href="https://github.com/wizardion">wizardion</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </div>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("jquery.placeholder");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
 </html>
