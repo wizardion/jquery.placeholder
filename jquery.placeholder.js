@@ -1,7 +1,7 @@
 /**
  * jquery.placeholder http://matoilic.github.com/jquery.placeholder
  *
- * @version v0.1.2
+ * @version v0.3.6
  * @author Alex Zarnitsa <alex@zarnitsa.net>
  * @copyright 2013 Alex Zarnitsa
  *
@@ -18,80 +18,67 @@
 			var selector = ':input[placeholder]';
 			
 			(function() {
-				var target = ($self.closest(selector)[0] != null)? $self.closest(selector) : $self.find(selector);
-				setEvents(target);
-				target.each(setPlaceholder);
-				target.blur();
+				var target = ($self.closest(selector)[0] != null)? $self.closest(selector) : 
+					($self.find(selector)[0] != null)? $self.find(selector) : $self;				
+							
+				target.each(setPlaceholder);				
 			})();
 			
 			//----------------------------------------------------------------------------------------------------------
 			function setPlaceholder() {
 				var target = $(this);
-				var placeholder = target.attr('placeholder');
+				var text = target.attr('placeholder');
+				var title = target.attr('title');
+				var span = $('<span style="position: relative; display: inline-block"></span>');				
+				var placeholder = $('<span style="position: absolute; cursor: text;" class="placeholder"></span>');
 				
-				if(target.val().length == 0) {
-					if(target.is(':password')) {
-						if(this.clone == null) {
-							var cloneID = target.attr('id') + '-clone';
-							var clone = $(target[0].outerHTML.replace(/type=(['"])?password\1/gi, 'type=$1text$1'))
-										.attr({value: placeholder, 'data-password': true, id: cloneID})
-										.addClass('placeholder');
-							
-							target.before(clone).hide();
-							setEvents(clone);
-							this.clone = clone;
-							this.clone[0].orign = target;
-						}
-						else
-						{
-							target.hide();
-							this.clone.show();
-						}
-					}else{
-						target.val(placeholder);
-						target.attr({'data-placeholder': true});
-						target.addClass('placeholder');
-					}
+				placeholder.css({'line-height': target.outerHeight() + 'px'});
+				target.attr('title', title);
+				placeholder.html("&nbsp;" + text);
+				
+				if(this.type == 'textarea') {
+					placeholder.css({'line-height': 'normal' });
 				}
+				
+				this.placeholder = placeholder;
+				this.placeholder[0].target = target;
+				target.wrap(span);
+				target.before(placeholder);
+				setEvents(target);
 			}
 			
 			//----------------------------------------------------------------------------------------------------------
-			function removePlaceholder() {
-				var target = $(this);
-				
-				if(target.is('[data-placeholder]')) {				
-					target.val('');
-					target.removeAttr('data-placeholder');
-					target.removeClass('placeholder');
+			function hidePlaceholder(target) {
+				target.placeholder.hide();
+			}
+			
+			//----------------------------------------------------------------------------------------------------------
+			function showPlaceholder() {
+				if($(this).val().length == 0) {
+					this.placeholder.show();
 				}
-				
-				if(target.is('[data-password]')) {
-					this.orign.show().focus();
-					
-				}	
 			}
 			
 			//----------------------------------------------------------------------------------------------------------
 			function propertychange() {
 				if (event.propertyName == "value") {
-					var target = $(this.clone);
-					
-					if(target.is('[data-password]')) {
-						setTimeout(function(){ target.hide(); }, 1);
-						target[0].orign.show();
-					}
+					hidePlaceholder(this);
 				}
 			}
 			
 			//----------------------------------------------------------------------------------------------------------
+			function mousedown() {
+				var target = this.target;
+				setTimeout(function(){ target.focus(); }, 1);
+			}
+			
+			//----------------------------------------------------------------------------------------------------------
 			function setEvents(target) {
-				target.bind('blur.placeholder', setPlaceholder);
-				target.bind('focus.placeholder', removePlaceholder);
+				target.bind('focus', function(){ hidePlaceholder(this); });
+				target.bind('blur', showPlaceholder);
 				target.each(function(){
-					if($(this).is(':password'))
-					{
-						this.onpropertychange = propertychange;
-					}
+					this.placeholder.mousedown(mousedown);
+					this.onpropertychange = propertychange;
 				});
 			}
 		};
