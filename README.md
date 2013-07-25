@@ -29,11 +29,10 @@ jquery.placeholder
 				<br/>
 				<br/>
 				It operates as follows. The plugin itself determines whether a browser supports attribute "placeholder" and if not, then it include this support. If the browser has support for this attribute, then this plugin is disabled.<br/>
-				So you can don't  worry, about the extra resources, it does not take.<br/><br/>
+				So you can don't  worry, about the extra resources, it does not take.<br/>
 			</div>
 			
-			<h2>It very easy:</h2>
-			
+			It very easy:
 			<div>
 				Just include this plugin on your page and run it when you want.<br/>
 				For example: <br/>
