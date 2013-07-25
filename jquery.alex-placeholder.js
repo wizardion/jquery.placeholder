@@ -1,5 +1,5 @@
 /**
- * jquery.placeholder http://matoilic.github.com/jquery.placeholder
+ * jquery.placeholder http://wizardion.github.io/jquery.placeholder/
  *
  * @version v0.3.6
  * @author Alex Zarnitsa <alex@zarnitsa.net>
