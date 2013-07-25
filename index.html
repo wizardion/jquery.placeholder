@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 	<script type="text/javascript" src="javascripts/jquery-1.7.1.js"></script>
+	<script type="text/javascript" src="javascripts/jquery.alex-placeholder.js"></script>
     <title>Jquery.placeholder</title>
   </head>
 
@@ -80,8 +81,34 @@
 					</li>
 				</ul>
 				
-				
-				
+				<h2>Demo:</h2>
+				<div class="loginInner">
+					<script type="text/javascript">
+						$(window).load(function(){
+							$('.loginInner').placeholder();
+						});
+					</script>
+					<style>
+						.placeholder
+						{
+							color: gray !important;
+						}
+
+						.placeholder:hover + input, .placeholder:hover + textarea
+						{
+							/*border: 1px solid red !important;*/
+						}
+					
+					</style>
+					<form id="login" name="login" action="?submit=true" method="post">
+						<input name="Username" id="input-username" type="text" title="Username" class="loginTextBox" placeholder="Username" />
+						<input name="Password" id="input-password" type="password" title="Password" class="passwordTextBox" placeholder="Password" />
+						<span class="left">
+						<input type="submit" name="Login" value="Login" class="loginButton" /> 
+						</span>
+						<p><textarea id="input-text" rows="10" cols="45" name="text" placeholder="Enter a text"></textarea></p>
+					</form>
+				</div>
 				
 				
 				
