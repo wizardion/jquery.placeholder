@@ -4,7 +4,7 @@ jquery.placeholder
 jquery.placeholder
 
 <div id="main_content_wrap" class="outer">
-		<div class="inner content">
+		
 			<h2>Hi All!</h2>
 			
 			<div>
@@ -42,14 +42,13 @@ jquery.placeholder
 				<ul type="decimal">
 					<li>
 						<b style="font-weight: bold;">Include: </b><br/>
-						<span class="code"></span><br/>
-						<script>					
-							$(".code").text('<script type="text/javascript" src="/scripts/jquery.alex-placeholder-0.3.6.js" />')
-						</script>
+						<div class="inner content">
+							<script type="text/javascript" src="/scripts/jquery.alex-placeholder-0.3.6.js" />
+						</div>
 					</li>
 					<li>
 						<b style="font-weight: bold;">Run: </b><br/>
-						<div class="code">
+						<div class="inner content">
 							$(window).load(function(){<br/>
 							&emsp;&emsp;$('.loginControl').placeholder();<br/>
 							});<br/>
@@ -65,4 +64,4 @@ jquery.placeholder
 				Good luck with your development!				
 			</div>
 		</div>
-    </div>
+    
