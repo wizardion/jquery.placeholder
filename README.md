@@ -56,6 +56,12 @@ jquery.placeholder
 		</li>
 	</ul>
 	
+	<h2>Demo online:</h2>
+	
+	<div>
+		<a href="http://wizardion.github.io/jquery.placeholder/">jquery.placeholder</a>
+	</div>
+	
 	Good luck with your development!
 	</div>			
 </div>
